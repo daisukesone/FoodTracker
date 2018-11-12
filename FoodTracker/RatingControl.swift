@@ -9,27 +9,33 @@
 import UIKit
 
 class RatingControl: UIStackView {
+    
+    //mark: properties
+    private var ratingButtons = [UIButton]()
+    var rating = 0
+    
 
     //mark: initialization
     
     
     override init(frame: CGRect) {
         super.init(frame:frame)
-        setUpBottens()
+        setUpButtens()
     }
     
     required init(coder: NSCoder) {
         super.init(coder:coder)
-        setUpBottens()
+        setUpButtens()
     }
     
     //MARK: Button Actions
-    @objc funk rationgButtonTrapped(button: UIbutton) {
-          prin
+    @objc func rationgButtonTapped(button: UIButton) {
+        print("Button pressed👍")
     }
     
     //MARK; Private Methods
-    private func setUpBottens(){
+    private func setUpButtens(){
+        for _ in 0..<5{
         //create the Botton
         let button = UIButton()
         button.backgroundColor = UIColor.red
@@ -39,10 +45,13 @@ class RatingControl: UIStackView {
         button.widthAnchor.constraint(equalToConstant: 44.0).isActive = true
        
         //setup The Button Action
-        button.addTarget(self, action: #selector(RatingControl.ratingButtonTapped(button:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(RatingControl.rationgButtonTapped(button:)), for: .touchUpInside)
         
         //add the button to the stack
         addArrangedSubview(button)
         
+        }
+        
+    
     }
 }
